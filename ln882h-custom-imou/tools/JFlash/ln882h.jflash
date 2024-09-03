@@ -2,7 +2,7 @@
   FileVersion = 2
 [GENERAL]
   ConnectMode = 0
-  CurrentFile = "flashimage.bin"
+  CurrentFile = "build-combo_mcu_basic_example-release/bin/flashimage.bin"
   DataFileSAddr = 0x00000000
   GUIMode = 0
   HostName = ""
@@ -13,8 +13,8 @@
   IRLen = 0
   MultipleTargets = 0
   NumDevices = 0
-  Speed0 = 10000
-  Speed1 = 10000
+  Speed0 = 100000
+  Speed1 = 100000
   TAP_Number = 0
   UseAdaptive0 = 0
   UseAdaptive1 = 0
@@ -41,7 +41,7 @@
   ChipName = "Cortex-M4"
 [FLASH]
   BaseAddr = 0x00000000
-  CustomRAMCode = "LN882H_Flash_4MB.mot"
+  CustomRAMCode = "D:\code\honor_magiclink_sdk\ln882h-custom-imou\tools\JFlash\LN882H_Flash_4MB.mot"
   NumBanks = 1
   UseCustomRAMCode = 1
 [PRODUCTION]

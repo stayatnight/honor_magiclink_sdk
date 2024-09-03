@@ -1,0 +1,38 @@
+--- ./ln882h-custom-imou/project/combo_mcu_basic_example/ProjModuleCollect.cmake	2024-03-26 18:51:42.000000000 +0800
++++ ./ln882h-custom-imou-patched/project/combo_mcu_basic_example/ProjModuleCollect.cmake	2024-04-03 10:23:15.000000000 +0800
+@@ -50,10 +50,10 @@
+ # list(APPEND MODULE_SRC ${IPERF_SRC})
+ 
+ ###################################   kv   #####################################
+-# file(GLOB_RECURSE  KV_SRC  ${COMP_KV_DIR}/*.c)
++file(GLOB_RECURSE  KV_SRC  ${COMP_KV_DIR}/*.c)
+ include_directories(${COMP_KV_DIR}/kv)
+ include_directories(${COMP_KV_DIR}/kv_port)
+-# list(APPEND MODULE_SRC ${KV_SRC})
++list(APPEND MODULE_SRC ${KV_SRC})
+ 
+ ###################################  nvds  #####################################
+ file(GLOB_RECURSE  NVDS_SRC  ${COMP_NVDS_DIR}/*.c)
+@@ -183,4 +183,22 @@
+ include_directories(${COMP_WIFI_DIR}/wifi_manager)
+ include_directories(${COMP_WIFI_DIR}/wifi_lib_import)
+ include_directories(${COMP_WIFI_DIR}/wifi_lib_export)
+-list(APPEND MODULE_SRC ${MISC_SRC})+list(APPEND MODULE_SRC ${MISC_SRC})
++
++###################################  mbedtls    ################################
++file(GLOB_RECURSE  MBEDTLS_SRC  ${COMP_MBEDTLS_DIR}/library/*.c)
++file(GLOB_RECURSE  MBEDTLS_WRAPPER_SRC  ${COMP_MBEDTLS_DIR}/port_ln/library/*.c)
++include_directories(${COMP_MBEDTLS_DIR}/include)
++include_directories(${COMP_MBEDTLS_DIR}/port_ln/include)
++list(APPEND MODULE_SRC ${MBEDTLS_SRC})
++list(APPEND MODULE_SRC ${MBEDTLS_WRAPPER_SRC})
++
++#############################   Partition MGR   ################################
++file(GLOB_RECURSE  PARTMGR_SRC  ${COMP_PARTMGR_DIR}/*.c)
++include_directories(${COMP_PARTMGR_DIR})
++list(APPEND MODULE_SRC ${COMP_PARTMGR_DIR})
++
++###################################  fota   ################################
++file(GLOB_RECURSE  FOTA_SRC  ${COMP_FOTA_DIR}/ota_agent/*.c)
++include_directories(${COMP_FOTA_DIR}/ota_agent)
++list(APPEND MODULE_SRC ${FOTA_SRC})

@@ -40,8 +40,8 @@ int main (int argc, char* argv[])
 
     //3.init log&AT
     log_init();
-    extern int ate_init(void);
-    ate_init();
+   // extern int ate_init(void);
+    //ate_init();
 
     //4.cm backtrace
     cm_backtrace_init("combo_mcu_basic_example", "hw", "sw");

@@ -1,0 +1,10 @@
+--- ./ln882h-custom-imou/project/combo_mcu_basic_example/gcc/gcc-compiler-flags.cmake	2024-03-26 18:51:42.000000000 +0800
++++ ./ln882h-custom-imou-patched/project/combo_mcu_basic_example/gcc/gcc-compiler-flags.cmake	2024-04-03 10:44:34.000000000 +0800
+@@ -1,6 +1,7 @@
+ string(TOUPPER ${CHIP_SERIAL}  DEF_CHIP_SERIAL)
+ add_compile_definitions(${DEF_CHIP_SERIAL})
+ add_compile_definitions(ARM_MATH_CM4)
++add_compile_definitions(MBEDTLS_CONFIG_FILE=<mbedtls_config.h>)
+ 
+ set(CPU         "-mcpu=cortex-m4")
+ set(FPU         "-mfpu=fpv4-sp-d16")

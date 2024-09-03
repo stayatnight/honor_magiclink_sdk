@@ -1,0 +1,11 @@
+--- ./ln882h-custom-imou/components/ble/ble_app/ble_gap/gap_advertising/ln_ble_advertising.c	2024-03-26 18:51:42.000000000 +0800
++++ ./ln882h-custom-imou-patched/components/ble/ble_app/ble_gap/gap_advertising/ln_ble_advertising.c	2024-04-02 20:52:20.000000000 +0800
+@@ -44,7 +44,7 @@
+     p_cmd->operation            = GAPM_CREATE_ADV_ACTIVITY;
+     p_cmd->own_addr_type        = param->own_addr_type;
+     p_cmd->adv_param.type       = param->adv_type;
+-    p_cmd->adv_param.disc_mode  = GAPM_ADV_MODE_GEN_DISC;
++    p_cmd->adv_param.disc_mode  = GAPM_ADV_MODE_BEACON;
+ 
+     p_cmd->adv_param.prop = param->adv_prop;
+    

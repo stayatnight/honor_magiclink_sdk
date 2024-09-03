@@ -1,0 +1,55 @@
+--- ./ln882h-custom-imou/components/wifi/wifi_lib_import/wifi_port.h	2024-03-26 18:51:42.000000000 +0800
++++ ./ln882h-custom-imou-patched/components/wifi/wifi_lib_import/wifi_port.h	2024-04-03 15:41:16.000000000 +0800
+@@ -75,7 +75,7 @@
+ 
+ /**
+  * @brief wlib_aes_init
+- * 
++ *
+  * @param key     in param
+  * @param keysize in param. Optional 16/24/32, uint byte.
+  * @return void*  return NULL: error; others: success.
+@@ -84,14 +84,14 @@
+ 
+ /**
+  * @brief wlib_aes_deinit
+- * 
++ *
+  * @param ctx in param, from wlib_aes_init()
+  */
+ void  wlib_aes_deinit(void *ctx);
+ 
+ /**
+  * @brief wlib_aes_setup
+- * 
++ *
+  * @param ctx in param, from wlib_aes_context_t, defined by lib
+  * @param keysize in param. Optional 16/24/32, uint byte.
+  * @param key in param
+@@ -99,7 +99,7 @@
+ void wlib_aes_setup(void *ctx, uint8_t keysize, const uint8_t *key);
+ /**
+  * @brief wlib_aes_encrypt
+- * 
++ *
+  * @param ctx in param, from wlib_aes_init()
+  * @param ptext in  param, plaintext
+  * @param ctext out param, ciphertext
+@@ -108,7 +108,7 @@
+ 
+ /**
+  * @brief wlib_aes_decrypt
+- * 
++ *
+  * @param ctx in param, from wlib_aes_init()
+  * @param ctext in  param, ciphertext
+  * @param ptext out param, plaintext
+@@ -142,7 +142,7 @@
+ #define WLIB_LOG_LVL_I            (2) //maclib log (necessary) infor output.
+ #define WLIB_LOG_LVL_W            (3) //maclib log warning output.
+ #define WLIB_LOG_LVL_D            (4) //maclib log debug output.
+-#define WLIB_LOG_LEVEL_CFG        WLIB_LOG_LVL_W
++#define WLIB_LOG_LEVEL_CFG        WLIB_LOG_LVL_E
+ 
+ #define WLIB_LOG_E(...)           wlib_log_printf(1, WLIB_LOG_LVL_E, __VA_ARGS__)
+ #define WLIB_LOG_I(...)           wlib_log_printf(1, WLIB_LOG_LVL_I, __VA_ARGS__)
