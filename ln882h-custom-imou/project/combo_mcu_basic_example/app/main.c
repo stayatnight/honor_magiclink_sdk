@@ -19,7 +19,7 @@
 #include "ln_ble_app_kv.h"
 #include "usr_app.h"
 #include "ln_ble_app_default_cfg.h"
-
+#include"myDimmingLib/dimmingLib.h"
 
 int main (int argc, char* argv[])
 {
@@ -71,6 +71,7 @@ int main (int argc, char* argv[])
     if ( 0 != ota_port_init()) {
         LOG(LOG_LVL_ERROR, "ota port failed!\r\n");
     }
+     LOG(LOG_LVL_INFO, "MY_LIB_LAMP_VERSION:202\r\n");
     //10.Creat usr app task.
     creat_usr_app_task();
 
