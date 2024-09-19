@@ -103,7 +103,7 @@ static int ln_transfer_init(void)
     fd = &g_at_serial;
 
     /* SER_PORT_UART0 or SER_PORT_UART1 */
-    serial_init(fd, SER_PORT_UART1, CONSOLE_PORT_BAUDRATE, ln_serial_rx_callbcak);
+    serial_init(fd, SER_PORT_UART0, CONSOLE_PORT_BAUDRATE, ln_serial_rx_callbcak);
 
     transfer->sem = ln_at_sem_create(0, 1024);
     if (transfer->sem == NULL) {
@@ -134,7 +134,6 @@ ln_at_transfer_t *ln_transfer_create(void)
 {
     ln_at_transfer_t *transfer = &g_at_transfer;
     memset(transfer, 0x0, sizeof(ln_at_transfer_t));
-
     transfer->init   = ln_transfer_init;
     transfer->deinit = ln_transfer_deinit;
     transfer->getc   = ln_transfer_getc;

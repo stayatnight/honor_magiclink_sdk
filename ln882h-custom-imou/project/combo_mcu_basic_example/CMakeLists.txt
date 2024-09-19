@@ -62,7 +62,7 @@ target_include_directories(${pro_executable_target}
     app
     bsp
     cfg
-
+    hal
 )
 
 include(gcc/gcc-custom-build-stage.cmake)

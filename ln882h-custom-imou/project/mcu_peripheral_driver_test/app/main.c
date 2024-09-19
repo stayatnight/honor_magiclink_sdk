@@ -31,11 +31,11 @@ int main (int argc, char* argv[])
     
     LOG(LOG_LVL_INFO,"ln882H init! \n");
     
-    ln_show_reg_init();
+  //  ln_show_reg_init();
     
     while(1)
     {
-        LOG(LOG_LVL_INFO,"ln882H running! \n");
-        ln_delay_ms(100);
+        LOG(LOG_LVL_INFO,"ln882H runningl! \n");
+        ln_delay_ms(1000);
     }
 }
