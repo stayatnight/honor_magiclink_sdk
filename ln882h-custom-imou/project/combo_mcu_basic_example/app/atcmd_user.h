@@ -1,15 +1,15 @@
 /******************************************************************************
 * Version     : V100R001C01B001D001                                           *
-* File        : hal.h                                                         *
+* File        : atcmd_user.h                                                  *
 * Description :                                                               *
-*               hal header file                                               *
+*               atcmd user header file                                        *
 * Note        : (none)                                                        *
 * Author      : kris li                                                       *
 * Date:       : 2022-09-07                                                    *
 * Mod History : (none)                                                        *
 ******************************************************************************/
-#ifndef __HAL_H__
-#define __HAL_H__
+#ifndef __ATCMD_USER_H__
+#define __ATCMD_USER_H__
 
 #ifdef __cplusplus
 extern "C" {
@@ -18,28 +18,7 @@ extern "C" {
 /******************************************************************************
 *                                Includes                                     *
 ******************************************************************************/
-#include "FreeRTOS.h"
-#include "task.h"
-#include "semphr.h"
-#include "appConfig.h"
-#include "appDefine.h"
-#include <stdint.h>
-#include <stdio.h>
-//#include "log_service.h"
-#include "myHalLog.h"
-#include "myHalIO.h"
-#include "myHalUart.h"
-#include "myHalPwm.h"
-#include "myHalFlash.h"
-#include "myHalWifi.h"
-
-//#include "oppHalSocket.h"
-//#include "oppHalRtc.h"
-//#include "oppHalWifi.h"
-//#include "oppHalI2C.h"
-//#include "oppHalSpi.h"
-//#include "oppHalAdc.h"
-//#include "oppHalTimer.h"
+#include "myHal.h"
 /******************************************************************************
 *                                Defines                                      *
 ******************************************************************************/
@@ -47,20 +26,18 @@ extern "C" {
 /******************************************************************************
 *                                Typedefs                                     *
 ******************************************************************************/
-
+//#pragma pack(1)
+//#pragma pack()
 /******************************************************************************
 *                           Extern Declarations                               *
 ******************************************************************************/
 
 /******************************************************************************
-*                             Declarations                                    *
+*                              Declarations                                   *
 ******************************************************************************/
 
 #ifdef __cplusplus
 }
 #endif
 
-
-
-#endif   /*__HAL_H__*/
-
+#endif /*__ATCMD_USER_H__*/

@@ -1,15 +1,15 @@
 /******************************************************************************
-* Version     : V100R001C01B001D001                                           *
-* File        : hal.h                                                         *
+* Version     : OPP_PLATFORM V100R001C01B001D001                              *
+* File        : oppLightShell.h                                                    *
 * Description :                                                               *
-*               hal header file                                               *
+*               OPPLE Light Shell定义头文件                                 *
 * Note        : (none)                                                        *
-* Author      : kris li                                                       *
-* Date:       : 2022-09-07                                                    *
+* Author      : 智能控制研发部                                                *
+* Date:       : 2015-09-01                                                    *
 * Mod History : (none)                                                        *
 ******************************************************************************/
-#ifndef __HAL_H__
-#define __HAL_H__
+#ifndef __OPP_LIGHT_SHELL_H__
+#define __OPP_LIGHT_SHELL_H__
 
 #ifdef __cplusplus
 extern "C" {
@@ -18,32 +18,12 @@ extern "C" {
 /******************************************************************************
 *                                Includes                                     *
 ******************************************************************************/
-#include "FreeRTOS.h"
-#include "task.h"
-#include "semphr.h"
-#include "appConfig.h"
-#include "appDefine.h"
-#include <stdint.h>
-#include <stdio.h>
-//#include "log_service.h"
-#include "myHalLog.h"
-#include "myHalIO.h"
-#include "myHalUart.h"
-#include "myHalPwm.h"
-#include "myHalFlash.h"
-#include "myHalWifi.h"
-
-//#include "oppHalSocket.h"
-//#include "oppHalRtc.h"
-//#include "oppHalWifi.h"
-//#include "oppHalI2C.h"
-//#include "oppHalSpi.h"
-//#include "oppHalAdc.h"
-//#include "oppHalTimer.h"
+#include "../oppCommon/oppCommon.h"
+#include "oppWLConfig.h"
 /******************************************************************************
 *                                Defines                                      *
 ******************************************************************************/
-
+#define OPP_DEBUG_UART                                     OPP_HAL_UART_1
 /******************************************************************************
 *                                Typedefs                                     *
 ******************************************************************************/
@@ -53,8 +33,11 @@ extern "C" {
 ******************************************************************************/
 
 /******************************************************************************
-*                             Declarations                                    *
+*                              Declarations                                   *
 ******************************************************************************/
+void oppWLTaskShellInit(uint32_t arg);
+void* oppWLTaskShell(uint32_t arg);
+uint32_t oppDbgUartPrintf(char* fmt, ...);
 
 #ifdef __cplusplus
 }
@@ -62,5 +45,7 @@ extern "C" {
 
 
 
-#endif   /*__HAL_H__*/
+#endif /*__OPP_LIGHT_SHELL_H__*/
+
+
 

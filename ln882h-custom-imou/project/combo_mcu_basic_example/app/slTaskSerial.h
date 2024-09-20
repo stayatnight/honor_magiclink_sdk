@@ -1,15 +1,15 @@
 /******************************************************************************
 * Version     : V100R001C01B001D001                                           *
-* File        : hal.h                                                         *
+* File        : slTaskSerial.h                                                *
 * Description :                                                               *
-*               hal header file                                               *
+*               smart lamp task serial header file                            *
 * Note        : (none)                                                        *
 * Author      : kris li                                                       *
-* Date:       : 2022-09-07                                                    *
+* Date:       : 2022-11-07                                                    *
 * Mod History : (none)                                                        *
 ******************************************************************************/
-#ifndef __HAL_H__
-#define __HAL_H__
+#ifndef __SL_TASK_SERIAL_H__
+#define __SL_TASK_SERIAL_H__
 
 #ifdef __cplusplus
 extern "C" {
@@ -18,49 +18,52 @@ extern "C" {
 /******************************************************************************
 *                                Includes                                     *
 ******************************************************************************/
-#include "FreeRTOS.h"
-#include "task.h"
-#include "semphr.h"
-#include "appConfig.h"
-#include "appDefine.h"
-#include <stdint.h>
-#include <stdio.h>
-//#include "log_service.h"
-#include "myHalLog.h"
-#include "myHalIO.h"
-#include "myHalUart.h"
-#include "myHalPwm.h"
-#include "myHalFlash.h"
-#include "myHalWifi.h"
-
-//#include "oppHalSocket.h"
-//#include "oppHalRtc.h"
-//#include "oppHalWifi.h"
-//#include "oppHalI2C.h"
-//#include "oppHalSpi.h"
-//#include "oppHalAdc.h"
-//#include "oppHalTimer.h"
+#include "myHal.h"
+#if defined(APP_TASK_LAMP_SERIAL_USE) && (APP_TASK_LAMP_SERIAL_USE == 1)
 /******************************************************************************
 *                                Defines                                      *
 ******************************************************************************/
-
+#if (APP_DEV_TYPE_USED == APP_DEV_TYPE_LAMP_BEDSIDE) //床头灯
+#define slSerialDeviceInit    slSerialLampBedsideInit
+#define slSerialDeviceProc    slSerialLampBedsideProc
+#elif (APP_DEV_TYPE_USED == APP_DEV_TYPE_LAMP_AURORA) //氛围灯
+#define slSerialDeviceInit    slSerialLampAuroraInit
+#define slSerialDeviceProc    slSerialLampAuroraProc
+#elif (APP_DEV_TYPE_USED == APP_DEV_TYPE_AIRER_BASE)  //晾衣架
+#define slSerialDeviceInit    slSerialAirerBaseInit
+#define slSerialDeviceProc    slSerialAirerBaseProc
+#elif (APP_DEV_TYPE_USED == APP_DEV_TYPE_BATHBULLY_BASE)  //浴霸
+#define slSerialDeviceInit    slSerialBathBullyBaseInit
+#define slSerialDeviceProc    slSerialBathBullyBaseProc
+#else
+#define slSerialDeviceInit()
+#define slSerialDeviceProc()
+#endif
 /******************************************************************************
 *                                Typedefs                                     *
 ******************************************************************************/
-
+#pragma pack(1)
+#pragma pack()
 /******************************************************************************
 *                           Extern Declarations                               *
 ******************************************************************************/
 
 /******************************************************************************
-*                             Declarations                                    *
+*                              Declarations                                   *
 ******************************************************************************/
+int slSerialMsgCtrl(uint8_t *pBuf, uint32_t ulLen, uint8_t repeatCnt);
+int slSerialRecieve(uint8_t *pBuf, uint32_t ulLength);
+uint32_t slSerialGetRecvLen(void);
+uint32_t slSerialGetSendLen(void);
+void slSerialClearSendBusy(void);
+
+//interface task
+void slTaskLampSerial(void *arg);
+
+#endif //#if (APP_TASK_LAMP_SERIAL_USE)
 
 #ifdef __cplusplus
 }
 #endif
 
-
-
-#endif   /*__HAL_H__*/
-
+#endif /*__SL_TASK_SERIAL_H__*/

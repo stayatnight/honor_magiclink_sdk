@@ -1,15 +1,15 @@
 /******************************************************************************
 * Version     : V100R001C01B001D001                                           *
-* File        : hal.h                                                         *
+* File        : slTaskFCT.h                                                   *
 * Description :                                                               *
-*               hal header file                                               *
+*               smart lamp task fct  header file                              *
 * Note        : (none)                                                        *
-* Author      : kris li                                                       *
-* Date:       : 2022-09-07                                                    *
+* Author      : Kris Li                                                       *
+* Date:       : 2022-09-27                                                    *
 * Mod History : (none)                                                        *
 ******************************************************************************/
-#ifndef __HAL_H__
-#define __HAL_H__
+#ifndef __SL_TASK_FCT_H__
+#define __SL_TASK_FCT_H__
 
 #ifdef __cplusplus
 extern "C" {
@@ -18,28 +18,8 @@ extern "C" {
 /******************************************************************************
 *                                Includes                                     *
 ******************************************************************************/
-#include "FreeRTOS.h"
-#include "task.h"
-#include "semphr.h"
-#include "appConfig.h"
-#include "appDefine.h"
-#include <stdint.h>
-#include <stdio.h>
-//#include "log_service.h"
-#include "myHalLog.h"
-#include "myHalIO.h"
-#include "myHalUart.h"
-#include "myHalPwm.h"
-#include "myHalFlash.h"
-#include "myHalWifi.h"
-
-//#include "oppHalSocket.h"
-//#include "oppHalRtc.h"
-//#include "oppHalWifi.h"
-//#include "oppHalI2C.h"
-//#include "oppHalSpi.h"
-//#include "oppHalAdc.h"
-//#include "oppHalTimer.h"
+#include "myHal.h"
+#if defined(APP_TASK_FCT_USE) && (APP_TASK_FCT_USE == 1)
 /******************************************************************************
 *                                Defines                                      *
 ******************************************************************************/
@@ -47,20 +27,23 @@ extern "C" {
 /******************************************************************************
 *                                Typedefs                                     *
 ******************************************************************************/
-
+//#pragma pack(1)
+//#pragma pack()
 /******************************************************************************
 *                           Extern Declarations                               *
 ******************************************************************************/
 
 /******************************************************************************
-*                             Declarations                                    *
+*                              Declarations                                   *
 ******************************************************************************/
+void rlTaskFct(void* arg);
+
+#endif //#if (APP_TASK_FCT_USE)
 
 #ifdef __cplusplus
 }
 #endif
 
+#endif /*__SL_TASK_FCT_H__*/
 
-
-#endif   /*__HAL_H__*/
 

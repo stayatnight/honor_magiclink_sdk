@@ -248,18 +248,18 @@ static int _rlTaskKeyInit(void)
 ******************************************************************************/
 void rlTaskKey(void* arg)
 {
-    rlFlagSet(RL_FLAG_TASK_KEY_RUNNING, 1);
-    if(0 > _rlTaskKeyInit()) {
-        rlFlagSet(RL_FLAG_TASK_KEY_RUNNING, 0);
-    }
+    // rlFlagSet(RL_FLAG_TASK_KEY_RUNNING, 1);
+    // if(0 > _rlTaskKeyInit()) {
+    //     rlFlagSet(RL_FLAG_TASK_KEY_RUNNING, 0);
+    // }
 
-    while(rlFlagGet(RL_FLAG_TASK_KEY_RUNNING)) {
-        vTaskDelay(10);
-        myKeyboardLoop();
-    }
+//     while(1) {
+//    //     vTaskDelay(10);
+//      //   myKeyboardLoop();
+//     }
 
-    my_hal_log_info("task 'key' delete\r\n");
-    vTaskDelete(NULL);
+//  //   my_hal_log_info("task 'key' delete\r\n");
+//  //   vTaskDelete(NULL);
 }
 
 #endif //#if (APP_TASK_KEY_USE)

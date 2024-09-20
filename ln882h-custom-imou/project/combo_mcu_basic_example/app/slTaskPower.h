@@ -1,49 +1,29 @@
 /******************************************************************************
 * Version     : V100R001C01B001D001                                           *
-* File        : hal.h                                                         *
+* File        : slTaskPower.h                                                 *
 * Description :                                                               *
-*               hal header file                                               *
+*               smart lamp task power header file                             *
 * Note        : (none)                                                        *
 * Author      : kris li                                                       *
-* Date:       : 2022-09-07                                                    *
+* Date:       : 2022-10-08                                                    *
 * Mod History : (none)                                                        *
 ******************************************************************************/
-#ifndef __HAL_H__
-#define __HAL_H__
+#ifndef __SL_TASK_POWER_H__
+#define __SL_TASK_POWER_H__
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 /******************************************************************************
 *                                Includes                                     *
 ******************************************************************************/
-#include "FreeRTOS.h"
-#include "task.h"
-#include "semphr.h"
-#include "appConfig.h"
-#include "appDefine.h"
-#include <stdint.h>
-#include <stdio.h>
-//#include "log_service.h"
-#include "myHalLog.h"
-#include "myHalIO.h"
-#include "myHalUart.h"
-#include "myHalPwm.h"
-#include "myHalFlash.h"
-#include "myHalWifi.h"
-
-//#include "oppHalSocket.h"
-//#include "oppHalRtc.h"
-//#include "oppHalWifi.h"
-//#include "oppHalI2C.h"
-//#include "oppHalSpi.h"
-//#include "oppHalAdc.h"
-//#include "oppHalTimer.h"
+#include "myHal.h"
 /******************************************************************************
 *                                Defines                                      *
 ******************************************************************************/
+#define SL_POWER_WALL_SWITCH_CNT_CLEAR_TIMEOUT              3000 //ms
 
+#define SL_POWER_FACTORY_RESET_WALL_SW_OPER_CNT             11
 /******************************************************************************
 *                                Typedefs                                     *
 ******************************************************************************/
@@ -53,14 +33,16 @@ extern "C" {
 ******************************************************************************/
 
 /******************************************************************************
-*                             Declarations                                    *
+*                              Declarations                                   *
 ******************************************************************************/
+void slPowerPulseContrlSim(uint8_t en);
+void slTaskPower(void* arg);
 
 #ifdef __cplusplus
 }
 #endif
 
+#endif /*__SL_TASK_POWER_H__*/
 
 
-#endif   /*__HAL_H__*/
 
