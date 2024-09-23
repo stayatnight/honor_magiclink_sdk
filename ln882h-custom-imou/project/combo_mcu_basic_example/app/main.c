@@ -71,10 +71,8 @@ int main (int argc, char* argv[])
     if ( 0 != ota_port_init()) {
         LOG(LOG_LVL_ERROR, "ota port failed!\r\n");
     }
-   //  LOG(LOG_LVL_INFO, "MY_LIB_LAMP_VERSION:202\r\n");
-    //10.Creat usr app task.
     creat_usr_app_task();
-
+    
     OS_ThreadStartScheduler();
 
     return 0;

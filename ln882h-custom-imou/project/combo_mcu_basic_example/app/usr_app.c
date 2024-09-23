@@ -31,6 +31,7 @@
 #include "demo.h"
 
 static OS_Thread_t g_usr_app_thread;
+static OS_Thread_t g_usr_test_thread;
 #define USR_APP_TASK_STACK_SIZE   4800 //Byte
 
 #define WIFI_TEMP_CALIBRATE             1
@@ -38,6 +39,7 @@ static OS_Thread_t g_usr_app_thread;
 #if WIFI_TEMP_CALIBRATE
 static OS_Thread_t g_temp_cal_thread;
 #define TEMP_APP_TASK_STACK_SIZE   4*256 //Byte
+#define TEST_TASK_SIZE 4*256
 #endif
 
 /* declaration */
@@ -290,6 +292,18 @@ static void usr_app_task_entry(void *params)
     OS_ThreadDelete(NULL);
 }
 
+
+static void test_app_entry(void*params)
+{
+ LN_UNUSED(params);
+for(;;)
+{
+
+     OS_MsDelay(1000);
+     LOG(LOG_LVL_ERROR,"hello word!");
+}
+
+}
 static void temp_cal_app_task_entry(void *params)
 {
     LN_UNUSED(params);
@@ -351,4 +365,9 @@ void creat_usr_app_task(void)
         LOG(LOG_LVL_INFO, "LN882H SDK Ver: %s [build time:%s][0x%08x]\r\n",
                 LN882H_SDK_VERSION_STRING, LN882H_SDK_BUILD_DATE_TIME, LN882H_SDK_VERSION);
     }
+
+    if(OS_OK!=OS_ThreadCreate(&g_usr_test_thread,"test",test_app_entry,NULL,OS_PRIORITY_BELOW_NORMAL,TEST_TASK_SIZE)){
+        LN_ASSERT(1);
+    }
+
 }
