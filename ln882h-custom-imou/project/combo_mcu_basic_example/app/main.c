@@ -45,33 +45,33 @@ int main (int argc, char* argv[])
 
     //4.cm backtrace
     cm_backtrace_init("combo_mcu_basic_example", "hw", "sw");
-    LOG(LOG_LVL_INFO, "------  combo_mcu_basic_example  ------\r\n");
-
+    LOG(LOG_LVL_INFO, "------  combo_mcu_basic_example  -\r\n");
+   // 
     //5. init NVDS&KV
     if (NVDS_ERR_OK != ln_nvds_init(NVDS_SPACE_OFFSET)) {
         LOG(LOG_LVL_ERROR, "NVDS init filed!\r\n");
     }
+     LOG(LOG_LVL_INFO, "main 54\r\n");
 
     if (KV_ERR_NONE != ln_kv_port_init(KV_SPACE_OFFSET, (KV_SPACE_OFFSET + KV_SPACE_SIZE))) {
         LOG(LOG_LVL_ERROR, "KV init filed!\r\n");
     }
-
+         LOG(LOG_LVL_INFO, "main 59\r\n");
     //6.init system parameter
     sysparam_integrity_check_all();
-
+        LOG(LOG_LVL_INFO, "main 62\r\n");
     //7.rf preprocess,img cal
-    wifi_rf_calibration();
-
+  //  wifi_rf_calibration();
+  //  LOG(LOG_LVL_INFO, "main 65\r\n");
     //8.Init wifi stack.
     wifi_init();
 //    wlib_pvtcmd_output_cb_set(ln_at_vprintf);
-
     //9.Init lwip stack.
     lwip_tcpip_init();
     if ( 0 != ota_port_init()) {
         LOG(LOG_LVL_ERROR, "ota port failed!\r\n");
     }
-     LOG(LOG_LVL_INFO, "MY_LIB_LAMP_VERSION:202\r\n");
+   //  LOG(LOG_LVL_INFO, "MY_LIB_LAMP_VERSION:202\r\n");
     //10.Creat usr app task.
     creat_usr_app_task();
 
