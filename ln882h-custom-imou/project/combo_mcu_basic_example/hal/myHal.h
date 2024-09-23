@@ -25,7 +25,7 @@ extern "C" {
 #include "appDefine.h"
 #include <stdint.h>
 #include <stdio.h>
-//#include "log_service.h"
+#include "log_service.h"
 #include "myHalLog.h"
 #include "myHalIO.h"
 #include "myHalUart.h"

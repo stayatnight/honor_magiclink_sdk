@@ -6,7 +6,6 @@ set(PROJ_ALL_SRC
     app/usr_app.c
     app/usr_ble_app.c
     app/demo.c
-    app/slTaskKey.c
     bsp/serial_hw.c
     bsp/drv_adc_measure.c
     startup/startup_${CHIP_SERIAL}_gcc.c
@@ -64,7 +63,6 @@ target_include_directories(${pro_executable_target}
     bsp
     cfg
     hal
-    inc
 )
 
 include(gcc/gcc-custom-build-stage.cmake)
