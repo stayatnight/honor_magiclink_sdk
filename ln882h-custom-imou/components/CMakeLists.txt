@@ -16,5 +16,5 @@ else()
 endif()
 
 if(COMP_DHCPD_SUPPORT)
-    add_subdirectory(${COMP_DHCPD_DIR})
+  add_subdirectory(${COMP_DHCPD_DIR})
 endif()
