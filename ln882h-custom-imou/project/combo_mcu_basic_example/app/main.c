@@ -20,7 +20,7 @@
 #include "usr_app.h"
 #include "ln_ble_app_default_cfg.h"
 #include"myDimmingLib/dimmingLib.h"
-//#include"slTaskKey.h"
+#include"slTaskKey.h"
 
 int main (int argc, char* argv[])
 {
