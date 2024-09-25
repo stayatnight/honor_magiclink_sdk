@@ -342,7 +342,6 @@ bool wifi_module_test_ok_already(void)
     uint8_t result = 0; 
     ln_nvds_get_ate_result(&result);
 
-    // ('S'=ate_successful, 'F'=ate_failed, others = not test!!!)
     if ("S" == result) {
         return true;
     } else {

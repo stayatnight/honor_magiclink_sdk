@@ -31,15 +31,18 @@
 #include "demo.h"
 
 static OS_Thread_t g_usr_app_thread;
-static OS_Thread_t g_usr_test_thread;
 #define USR_APP_TASK_STACK_SIZE   4800 //Byte
-
 #define WIFI_TEMP_CALIBRATE             1
 
 #if WIFI_TEMP_CALIBRATE
 static OS_Thread_t g_temp_cal_thread;
 #define TEMP_APP_TASK_STACK_SIZE   4*256 //Byte
-#define TEST_TASK_SIZE 4*256
+#endif
+
+//yankon light task
+#if LAMP_TASK_EN && LAMP_TASK_EN==1
+static OS_Thread_t g_lamp_thread;
+#define LAMP_TASK_STACK_SIZE   4*256 //Byte
 #endif
 
 /* declaration */
@@ -292,7 +295,13 @@ static void usr_app_task_entry(void *params)
     OS_ThreadDelete(NULL);
 }
 
-
+static void usr_app_light_task_entry(void *params)
+{
+    LN_UNUSED(params);
+    while (1) {
+        //TODO lamp task 
+    }
+}
 static void test_app_entry(void*params)
 {
  LN_UNUSED(params);
@@ -325,7 +334,6 @@ static void temp_cal_app_task_entry(void *params)
     while (1)
     {
         OS_MsDelay(1000);
-
         adc_val = drv_adc_read(ADC_CH0);
         wifi_do_temp_cal_period(adc_val);
 
@@ -359,15 +367,14 @@ void creat_usr_app_task(void)
         LN_ASSERT(1);
     }
 #endif
-
     /* print sdk version */
     {
         LOG(LOG_LVL_INFO, "LN882H SDK Ver: %s [build time:%s][0x%08x]\r\n",
                 LN882H_SDK_VERSION_STRING, LN882H_SDK_BUILD_DATE_TIME, LN882H_SDK_VERSION);
     }
 
-    // if(OS_OK!=OS_ThreadCreate(&g_usr_test_thread,"test",test_app_entry,NULL,OS_PRIORITY_BELOW_NORMAL,TEST_TASK_SIZE)){
-    //     LN_ASSERT(1);
-    // }
+#if LAMP_TASK_EN && LAMP_TASK_EN==1
+if(OS_OK!= OS_ThreadCreate(&g_lamp_thread,"LampApp",usr_app_light_task_entry,NULL,OS_PRIORITY_BELOW_NORMAL,LAMP_TASK_STACK_SIZE));
+#endif
 
 }

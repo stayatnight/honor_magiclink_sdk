@@ -86,7 +86,6 @@ static int GetDevNameFunc(void **data, unsigned int *len)
     (void)memset(*data, 0, tmpLen);
 
     (void)strcpy(*data, g_devName);
-
     return 0;
 }
 
