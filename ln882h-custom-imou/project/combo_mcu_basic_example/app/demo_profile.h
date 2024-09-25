@@ -10,8 +10,7 @@
 extern "c" {
 #endif
 
-static const char *g_profile = "\
-{\
+static const char *g_profile = "{\
 \"prdID\": \"Y2KW\",\
 \"serviceList\": [{\
 \"propertyList\": [{\
@@ -591,8 +590,7 @@ static const char *g_profile = "\
 }],\
 \"description\": \"阳光博荣台灯S\",\
 \"title\": \"阳光博荣台灯S\"\
-}\
-";
+}";
 
 
 #ifdef __cplusplus

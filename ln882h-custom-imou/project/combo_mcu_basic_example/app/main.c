@@ -14,6 +14,7 @@
 #include "ln_nvds.h"
 #include "ln_kv_api.h"
 #include "ln_at.h"
+#include"ln_ate.h"
 #include "flash_partition_table.h"
 
 #include "ln_ble_app_kv.h"
@@ -40,8 +41,8 @@ int main (int argc, char* argv[])
 
     //3.init log&AT
     log_init();
-   // extern int ate_init(void);
-    //ate_init();
+    extern int ate_init(void);
+    ate_init();
 
     //4.cm backtrace
     cm_backtrace_init("combo_mcu_basic_example", "hw", "sw");
@@ -61,7 +62,7 @@ int main (int argc, char* argv[])
     sysparam_integrity_check_all();
         LOG(LOG_LVL_INFO, "main 62\r\n");
     //7.rf preprocess,img cal
-  //  wifi_rf_calibration();
+   wifi_rf_calibration();
   //  LOG(LOG_LVL_INFO, "main 65\r\n");
     //8.Init wifi stack.
     wifi_init();

@@ -298,7 +298,6 @@ static void test_app_entry(void*params)
  LN_UNUSED(params);
 for(;;)
 {
-
      OS_MsDelay(1000);
      LOG(LOG_LVL_ERROR,"hello word!");
 }
@@ -342,6 +341,7 @@ static void temp_cal_app_task_entry(void *params)
 
 void creat_usr_app_task(void)
 {
+
     {
         ln_pm_sleep_mode_set(ACTIVE);
         ln_pm_always_clk_disable_select(CLK_G_I2S | CLK_G_WS2811 | CLK_G_SDIO | CLK_G_AES);
@@ -366,8 +366,8 @@ void creat_usr_app_task(void)
                 LN882H_SDK_VERSION_STRING, LN882H_SDK_BUILD_DATE_TIME, LN882H_SDK_VERSION);
     }
 
-    if(OS_OK!=OS_ThreadCreate(&g_usr_test_thread,"test",test_app_entry,NULL,OS_PRIORITY_BELOW_NORMAL,TEST_TASK_SIZE)){
-        LN_ASSERT(1);
-    }
+    // if(OS_OK!=OS_ThreadCreate(&g_usr_test_thread,"test",test_app_entry,NULL,OS_PRIORITY_BELOW_NORMAL,TEST_TASK_SIZE)){
+    //     LN_ASSERT(1);
+    // }
 
 }

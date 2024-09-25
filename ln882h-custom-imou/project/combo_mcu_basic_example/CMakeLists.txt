@@ -6,6 +6,7 @@ set(PROJ_ALL_SRC
     app/usr_app.c
     app/usr_ble_app.c
     app/demo.c
+    app/ln_ate.c
     bsp/serial_hw.c
     bsp/drv_adc_measure.c
     startup/startup_${CHIP_SERIAL}_gcc.c

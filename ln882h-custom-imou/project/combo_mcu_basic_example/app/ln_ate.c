@@ -324,7 +324,7 @@ int ate_init(void)
     fd = &g_at_serial;
 
     /* serial init */
-    serial_init(fd, SER_PORT_UART1, ATE_CLI_BAUDRATE, ln_serial_rx_callbcak);
+    serial_init(fd, SER_PORT_UART0, ATE_CLI_BAUDRATE, ln_serial_rx_callbcak);
     /* semaphore init */
     if (0 != OS_SemaphoreCreate(&g_uart_rx_sem, 0, 2000)) {
         return -1;
