@@ -60,9 +60,9 @@ int main (int argc, char* argv[])
          LOG(LOG_LVL_INFO, "main 59\r\n");
     //6.init system parameter
     sysparam_integrity_check_all();
-        LOG(LOG_LVL_INFO, "main 62\r\n");
+  //      LOG(LOG_LVL_INFO, "main 62\r\n");
     //7.rf preprocess,img cal
-   wifi_rf_calibration();
+ //s  wifi_rf_calibration();
   //  LOG(LOG_LVL_INFO, "main 65\r\n");
     //8.Init wifi stack.
     wifi_init();

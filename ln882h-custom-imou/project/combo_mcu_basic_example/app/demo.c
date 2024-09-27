@@ -10,6 +10,7 @@
 #include "magiclink.h"
 #include "magiclink_netcfg.h"
 #include "magiclink_log.h"
+#include"demo_profile.h"
 
 #define MY_PRDKEY "******aae4a81be18c48449a8fb71b809e0ddc"
 #define MY_PRDSECRET "******af4e78f66846c7982697bcd4542a6c09"
